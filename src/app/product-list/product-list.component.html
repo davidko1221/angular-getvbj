@@ -1,0 +1,30 @@
+<h2>Products</h2>
+
+
+<!-- a Structural Directive ngFor that repeats a div over products -->
+<div *ngFor="let product of products">
+
+<!-- Interpolation Syntax -->
+  <h3>
+    <!-- Property binding to title -->
+    <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+
+
+  <!-- Event binding -->
+  <button (click)="share()">
+    Share
+  </button>
+
+<app-product-alerts
+  [product]="product"
+  (notify)="onNotify()">
+</app-product-alerts>
+
+</div>
